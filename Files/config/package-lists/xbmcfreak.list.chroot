@@ -1,0 +1,12 @@
+samba
+proftpd-basic
+wget lynx lftp ftp zip
+sabnzbdplus sabnzbdplus-theme-mobile
+transmission-cli transmission-daemon transmission-common
+#apache2 libapache2-mod-php5 php5-common php5-curl
+libid3tag0
+python-software-properties
+locate ethtool
+libao-dev avahi-utils
+upower acpi-support
+
