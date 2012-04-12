@@ -53,8 +53,7 @@ EOF
 fi
 
 #rrs feed
-rm -rf /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml
-
+rm -rf /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml &> /dev/null
 if [ ! -f /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml ] ; then
 	cat > /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml << EOF
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -75,11 +74,6 @@ mkdir /var/lib/transmission-daemon/info &> /dev/null
 ln -s /etc/transmission-daemon/settings.json /var/lib/transmission-daemon &> /dev/null
 chown -R $xbmcUser:$xbmcUser /var/lib/transmission-daemon &> /dev/null
 service transmission-daemon restart >/dev/null 2>&1 &
-
-#configure samba
-sed -i "s/home\/xbmc/home\/$xbmcUser/g" /etc/samba/smb.conf
-sed -i "s/guest account = xbmc/guest account = $xbmcUser/g" /etc/samba/smb.conf
-service smbd restart >/dev/null 2>&1 &
 
 #user rights rtmpdump
 chown $xbmcUser:$xbmcUser /usr/local/bin/rtmpdump -R
