@@ -9,4 +9,4 @@ python-software-properties
 locate ethtool
 libao-dev avahi-utils
 upower acpi-support
-
+python-cheetah

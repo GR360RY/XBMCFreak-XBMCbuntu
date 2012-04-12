@@ -1,7 +1,25 @@
 #!/bin/bash
 
-#get current xbmc user
-xbmcUser=$(getent passwd 1000 | sed -e 's/\:.*//')
+#      Copyright (C) 2005-2008 Team XBMC
+#      http://www.xbmc.org
+#
+#  This Program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2, or (at your option)
+#  any later version.
+#
+#  This Program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with XBMC; see the file COPYING.  If not, write to
+#  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+#  http://www.gnu.org/copyleft/gpl.html
+
+xbmcUser=$1
+xbmcParams=$2
 
 #create xbmc userdata dir
 mkdir -p /home/$xbmcUser/.xbmc/userdata &> /dev/null
@@ -34,7 +52,6 @@ if [ ! -f /home/$xbmcUser/.xbmc/userdata/advancedsettings.xml ] ; then
 EOF
 fi
 
-
 #rrs feed
 rm -rf /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml
 
@@ -45,7 +62,7 @@ if [ ! -f /home/$xbmcUser/.xbmc/userdata/RssFeeds.xml ] ; then
   <!-- RSS feeds. To have multiple feeds, just add a feed to the set. You can also have multiple sets. !-->
   <!-- To use different sets in your skin, each must be called from skin with a unique id. !-->
   <set id="1">
-    <feed updateinterval="30">http://www.xbmcfreak.nl/feed/</feed>
+    <feed updateinterval="30">http://feeds.feedburner.com/xbmcfreak-en/</feed>
   </set>
 </rssfeeds>
 EOF
@@ -105,4 +122,3 @@ service sickbeard restart >/dev/null 2>&1 &
 
 #fix permissions
 chown -R $xbmcUser:$xbmcUser /home/$xbmcUser/.xbmc
-
