@@ -114,5 +114,8 @@ sed -i "s/RUN_AS=SICKBEARD_USER/RUN_AS=$xbmcUser/g" /etc/init.d/sickbeard
 chown -R $xbmcUser:$xbmcUser /usr/share/sickbeard/
 service sickbeard restart >/dev/null 2>&1 &
 
+#set xbmc password
+echo $xbmcUser:xbmc | chpasswd
+
 #fix permissions
 chown -R $xbmcUser:$xbmcUser /home/$xbmcUser/.xbmc
