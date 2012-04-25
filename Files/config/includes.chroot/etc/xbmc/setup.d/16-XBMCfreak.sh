@@ -114,6 +114,12 @@ sed -i "s/RUN_AS=SICKBEARD_USER/RUN_AS=$xbmcUser/g" /etc/init.d/sickbeard
 chown -R $xbmcUser:$xbmcUser /usr/share/sickbeard/
 service sickbeard restart >/dev/null 2>&1 &
 
+#configure sabnzbd
+sed -i "s/USER=/USER=xbmc/g" /etc/default/sabnzbdplus
+sed -i "s/PORT=/PORT=9999/g" /etc/default/sabnzbdplus
+sed -i "s/HOST=/HOST=0.0.0.0/g" /etc/default/sabnzbdplus
+/etc/init.d/sabnzbdplus restart >/dev/null 2>&1 &
+
 #set xbmc password
 echo $xbmcUser:xbmc | chpasswd
 
