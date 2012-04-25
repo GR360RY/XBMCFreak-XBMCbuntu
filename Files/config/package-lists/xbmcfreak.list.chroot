@@ -10,3 +10,6 @@ locate ethtool
 libao-dev avahi-utils
 upower acpi-support
 python-cheetah
+
+#fixes xsession-errors Gtk-Message: Failed to load module "canberra-gtk-module"
+libcanberra-gtk-module
