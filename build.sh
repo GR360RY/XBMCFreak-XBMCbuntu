@@ -186,6 +186,7 @@ cd $WORKPATH
 
 lb clean
 lb config
+sed -i "s/archive.ubuntu.com/nl.archive.ubuntu.com/g" config/bootstrap
 lb build
 
 cd $THISDIR
