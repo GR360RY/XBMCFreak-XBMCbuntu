@@ -111,6 +111,7 @@ fi
 #configure sickbeard
 sed -i "s/DATA_DIR=~\/.sickbeard/DATA_DIR=~\/usr\/share\/sickbeard\//g" /etc/init.d/sickbeard
 sed -i "s/RUN_AS=SICKBEARD_USER/RUN_AS=$xbmcUser/g" /etc/init.d/sickbeard
+sed -i "s/APP_PATH=PATH_TO_SICKBEARD_DIRECTORY/APP_PATH=\/usr\/share\/sickbeard/g" /etc/init.d/sickbeard
 chown -R $xbmcUser:$xbmcUser /usr/share/sickbeard/
 service sickbeard restart >/dev/null 2>&1 &
 
